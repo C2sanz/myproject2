@@ -46,7 +46,11 @@ class Covid19Controller extends Controller
      */
     public function create()
     {
-        //
+        {
+            return view('covid19.create');
+        }
+    
+    
     }
 
     /**
@@ -57,7 +61,9 @@ class Covid19Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $requestData = $request->all();
+        Covid19::create($requestData);
+        return redirect('covid19');
     }
 
     /**
@@ -81,7 +87,12 @@ class Covid19Controller extends Controller
      */
     public function edit($id)
     {
-        //
+        {
+            $covid19 = Covid19::findOrFail($id);
+    
+            return view('covid19.edit', compact('covid19'));
+        }
+    
     }
 
     /**
@@ -93,7 +104,10 @@ class Covid19Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $requestData = $request->all();        
+        $covid19 = Covid19::findOrFail($id);
+        $covid19->update($requestData);
+        return redirect('covid19');
     }
 
     /**
@@ -104,6 +118,8 @@ class Covid19Controller extends Controller
      */
     public function destroy($id)
     {
-        //
+        Covid19::destroy($id);
+
+        return redirect('covid19');
     }
 }
