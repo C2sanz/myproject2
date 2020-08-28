@@ -18,14 +18,14 @@ class staffsController extends Controller
         $search = $request->get('search');        
         if (!empty($search)) {
             //กรณีมีข้อมูลที่ต้องการ search จะมีการใช้คำสั่ง where และ orWhere
-            $staffs = staff::where('action', 'LIKE', "%$search%")
+            $staffs = staff::Where ('age', 'LIKE', "%$search%")
                 ->orWhere('name', 'LIKE', "%$search%")
                 ->orWhere('salary', 'LIKE', "%$search%")
-                ->orWhere('age', 'LIKE', "%$search%")
-                ->orderBy('phone', 'desc')->paginate($perPage);
+                ->orWhere('phone', 'LIKE', "%$search%")
+                ->orderBy('id', 'desc')->paginate($perPage);
         } else {
             //กรณีไม่มีข้อมูล search จะทำงานเหมือนเดิม
-            $staffs = staff::orderBy('date', 'desc')->paginate($perPage);
+            $staffs = staff::orderBy('id', 'desc')->paginate($perPage);
         }  
 
 
