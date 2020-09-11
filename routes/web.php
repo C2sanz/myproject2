@@ -110,3 +110,7 @@ Route::resource('/staff' , 'staffsController');
 
 
 
+
+Route::resource('post', 'PostController');
+Route::resource('book', 'BookController');
+Route::resource('street', 'streetController');
