@@ -116,3 +116,6 @@ Route::resource('/staff' , 'staffsController');
 Route::resource('post', 'PostController');
 Route::resource('book', 'BookController');
 Route::resource('street', 'streetController');
+Route::resource('profile', 'ProfileController');
+Route::resource('vehicle', 'VehicleController');
+Route::resource('user', 'UserController');
