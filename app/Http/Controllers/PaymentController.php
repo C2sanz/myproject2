@@ -85,6 +85,7 @@ class PaymentController extends Controller
     public function show($id)
     {
         $payment = Payment::findOrFail($id);
+        
 
         return view('payment.show', compact('payment'));
     }
@@ -99,9 +100,11 @@ class PaymentController extends Controller
     public function edit($id)
     {
         $payment = Payment::findOrFail($id);
+        $order = Order::findOrFail($payment->order_id);
 
-        return view('payment.edit', compact('payment'));
+        return view('payment.edit', compact('payment','order'));
     }
+
 
     /**
      * Update the specified resource in storage.

@@ -120,11 +120,14 @@ Route::resource('profile', 'ProfileController');
 Route::resource('vehicle', 'VehicleController');
 Route::resource('user', 'UserController');
 
+Route::get('/product/pdf', 'ProductController@pdf_index');
 Route::resource('product', 'ProductController');
 
 Route::middleware(['auth'])->group(function () {
 Route::resource('order', 'OrderController');
 Route::resource('payment', 'PaymentController');
 Route::resource('order-product', 'OrderProductController');
+
+
 });
 

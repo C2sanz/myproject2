@@ -7,6 +7,8 @@ use App\Http\Requests;
 
 use App\Product;
 use Illuminate\Http\Request;
+use PDF;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -15,6 +17,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\View\View
      */
+    public function pdf_index() {
+        $product = Product::all();
+          $pdf = PDF::loadView('test_pdf',['product'=>$product]);
+        return $pdf->stream('test.pdf'); //แบบนี้จะ stream มา preview
+        //return $pdf->download('test.pdf'); //แบบนี้จะดาวโหลดเลย
+
+  }
     public function index(Request $request)
     {
         $keyword = $request->get('search');

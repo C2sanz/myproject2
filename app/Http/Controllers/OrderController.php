@@ -144,6 +144,14 @@ class OrderController extends Controller
             case "completed" : 
                 $requestData['completed_at'] = date("Y-m-d H:i:s");
                 break;
+            case "cancelled" : 
+                $requestData['cancelled_at'] = date("Y-m-d H:i:s");
+                $order_products = $order->order_products;
+                foreach($order_products as $item)
+                {
+                    Product::where('id',$item->product_id)->increment('quantity', $item->quantity);
+                }
+                break;    
         }
 
         $order->update($requestData);

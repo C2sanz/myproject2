@@ -76,6 +76,9 @@
                                                 <div>เลขติดตามพัสดู</div>
                                                  <div>{{ $item->tracking }}</div>
                                                 @break
+                                                @case("cancelled") 
+                                                <div>ยกเลิกออเดอร์แล้ว</div>
+                                                @break
                                         @endswitch
                                         </td>
                                         <td>
